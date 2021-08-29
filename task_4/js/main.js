@@ -23,9 +23,7 @@ console.log(bindAge);
 
 // Написать функцию, которая не принимает никаких аргументов. В теле функции написать логику для нахождения суммы значений любого количества ключей (значения ключей должны быть больше нуля) из переданного контекста.
 function sumKeys(){
-
-    const obj = this;
-    const valueObj = Object.values(obj);
+    const valueObj = Object.values(this);
     const filterObj = valueObj.filter(el => el != 0 && typeof el === 'number');
     const sumObj = filterObj.reduce((acc, item) => acc + item);
     return sumObj;
@@ -35,17 +33,13 @@ const objectA = {
     a: 1,
     b: 2,
     c: 3,
-    
 }
 
 const sum = sumKeys.bind(objectA);
 console.log(sum());
-
-
 // Написать функцию, которая возвращает новый массив, в котором должны быть только четные числа, которые больше двуx и меньше 10. Новый массив будет состоять из значений ключа values из контекста, если такого ключа нет, то выводим сообщение "Не найдено".
 
 function getNewArray(){
-
         if(!this.values){
             return `Не найдено`;
         }
@@ -61,7 +55,6 @@ function getNewArray(){
 
         const newArr = [...modifiedArr];
         return newArr;
-
 }
 
 const valObject0 = {
