@@ -14,7 +14,6 @@ const citiesAndCountries = {
 };
 
 function getCity(obj) {
-
     if (typeof obj === 'object') {
 
         const valueArr = Object.entries(obj);
@@ -46,7 +45,6 @@ const daysOfWeek = {
     ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
     en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 }
-
 
 function getAge(day, lang) {
 
