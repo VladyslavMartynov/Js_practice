@@ -14,8 +14,7 @@ const citiesAndCountries = {
 };
 
 function getCity(obj) {
-    if (typeof obj === 'object') {
-
+    if (obj) {
         const valueArr = Object.entries(obj);
         const newArr = valueArr.map(el => {
             return `${el[0]} - это ${el[1]}`
@@ -24,7 +23,7 @@ function getCity(obj) {
         return newArr;
 
     } else {
-        return 'Error';
+        return 'Error, data is incorrect';
     }
 }
 
@@ -47,7 +46,6 @@ const daysOfWeek = {
 }
 
 function getAge(day, lang) {
-
     const {
         [lang]: lan
     } = daysOfWeek;
@@ -67,7 +65,6 @@ function getAge(day, lang) {
 console.log(getAge(7, 'ru'));
 
 // Написать универсальную функцию setProto, которая принимает в себя 2 аргумента(currentObj, protoObj).
-// 
 
 function setProto(currentObj, protoObj) {
     Object.setPrototypeOf(currentObj, protoObj);
@@ -87,7 +84,6 @@ const per2 = {
 setProto(per2, per1);
 console.log(per2);
 console.log(per2.work());
-
 
 const person = {
     setName(name) {
