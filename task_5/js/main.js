@@ -42,7 +42,7 @@ const daysOfWeek = {
     en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 }
 
-function getAge(day, lang) {
+function getNameOfDay(day, lang) {
     const {
         [lang]: lan
     } = daysOfWeek;
@@ -59,7 +59,7 @@ function getAge(day, lang) {
     return findElem;
 }
 
-console.log(getAge(7, 'ru'));
+console.log(getNameOfDay(7, 'ru'));
 
 // Написать универсальную функцию setProto, которая принимает в себя 2 аргумента(currentObj, protoObj).
 
