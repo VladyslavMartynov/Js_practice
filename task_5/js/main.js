@@ -42,24 +42,22 @@ const daysOfWeek = {
     en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 }
 
-function getNameOfDay(day, lang) {
-    const {
-        [lang]: lan
-    } = daysOfWeek;
-
-    if (!lan || !(day > 0 && day < 8)) {
-        return 'Error is not correct data'
+function getNameOfDay(lang, day) {
+    if(!daysOfWeek.hasOwnProperty(lang)){
+        return 'Incorrect week value!';
     }
 
-    const valueObj = [...lan];
-    const findElem = valueObj.find((item, i) => {
-        return ++i === day;
-    });
+    if(day < 1 || day > 8 || !day){
+        return 'Incorrect day value!';
+    }
 
-    return findElem;
+    const newDay = daysOfWeek[lang][day - 1];
+    return newDay;
+
 }
 
-console.log(getNameOfDay(7, 'ru'));
+const newDay = getNameOfDay('ru', 5); 
+console.log(newDay);
 
 // Написать универсальную функцию setProto, которая принимает в себя 2 аргумента(currentObj, protoObj).
 
