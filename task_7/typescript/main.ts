@@ -8,7 +8,7 @@ type nameArr = Array<string>;
 const arr: nameArr = ['Vasya', 'Petya', 'Alexey'];
 
 const removeUser = (arr: Array<string>, num: number): Array<string> =>
-     arr.filter((el, i) => {
+    arr.filter((el, i) => {
         return i !== num;
     });
 
@@ -27,9 +27,9 @@ const setAttrToElem = (elem: HTMLElement, name?: string, value?: Array<string>) 
 const styleElem = (elem: HTMLElement, valueArr: Array<string>) =>
    setAttrToElem(elem,'style', valueArr);
 
-const div = createElem('div');
-const div2 = createElem('div');
-const div3 = createElem('div');
+const div: HTMLElement = createElem('div');
+const div2: HTMLElement = createElem('div');
+const div3: HTMLElement = createElem('div');
 
 setAttrToElem(div,'id',['box']);
 setAttrToElem(div2,'id',['box2']);
@@ -96,14 +96,14 @@ const createHtmlCollection = (arr: Array<string>, attr: string, val: string, tar
     });
 }
 
-const innerTextCollection = (collection: HTMLCollection, i:number = 0) => {
+const innerTextCollection = (collection: any, i:number = 0) => {
     for (const elem of collection) {
         elem.innerHTML = `${(i += 1)}`;
         console.log(elem);
     }
 }
 
-const array: Array<string> = ['div', 'div', 'div', 'div', 'div', 'div', 'div', 'div'];
+const array: Array<string> = ['div', 'div', 'div', 'div', 'div'];
 createHtmlCollection(array, 'class', 'item', holder);
 
 innerTextCollection(collection);
@@ -119,20 +119,5 @@ styleElem(holder,[`
     border-radius: 20% 20% 0 0;
 `]);
 
+
 // С помощью стилей привести блоки в такой вид (в стилях только флекс)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
