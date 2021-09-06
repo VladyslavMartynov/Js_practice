@@ -121,3 +121,48 @@ styleElem(holder,[`
 
 
 // С помощью стилей привести блоки в такой вид (в стилях только флекс)
+// Напилить код функции modificator, такой, чтобы в результате работы кода была строка "sampleFunc: test | sample":
+function sampleFunc(): void {
+    console.log(`${arguments.callee.name}: ${arguments[0]} | ${arguments[1]}` )
+}
+
+function modificator(func: Function): Function {
+    return function() {
+        func('test','sample');
+    }
+}
+
+const testFunc = modificator(sampleFunc)
+testFunc(); // sampleFunc: test | sample
+
+//Создать массив group, элементы которого будут объектами, содержащими данные каждого студента группы
+// Какие данные - на ваше усмотрение ( например, имя, фамилия, возраст, наличие ноутбука и т.д. )
+
+class Person {
+    constructor(public name:string,
+                public lastName: string,
+                public age:number,
+                public notebook: boolean,
+    ) {}
+
+    public toString(){
+        return Object.keys(this)
+            .map((el) => {
+                return `${el} - ${Object.create(this)[el]}`;
+            })
+            .join(',');
+    }
+}
+
+const group: Array<Person> = [
+    new Person('Vlad','Alexandrov',23,true),
+    new Person('Vasya','Lyx',21,true),
+    new Person('Alexandr','Kostylev',20,true),
+    new Person('Denis','Sharipov',23,true),
+]
+
+function getStudentsList<T extends Array<Object>>(arrayOfStudents: T):string {
+    return String(arrayOfStudents);
+}
+
+console.log(getStudentsList((group)));
