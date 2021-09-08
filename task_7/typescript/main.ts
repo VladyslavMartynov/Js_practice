@@ -165,4 +165,5 @@ function getStudentsList<T extends Array<Object>>(arrayOfStudents: T):string {
     return String(arrayOfStudents);
 }
 
+
 console.log(getStudentsList((group)));
