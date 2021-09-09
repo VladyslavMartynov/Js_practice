@@ -18,16 +18,15 @@ var ZOOM_IMG = "\n    width: 200px;\n    cursor: pointer;\n    transition: 1s;\n
 var IMG_STYLE = "\n    cursor: pointer;\n    display: inline-block;\n    margin-top: 50px;\n    width: 100px;\n    height: 100px;\n    border: 1px solid black;\n    transition: 1s;\n";
 var BTN_STYLE = "\n    width: 50px;\n    height: 20px;\n    display: inline-block;\n    border: 1px solid black;\n    background-color: green;\n    color: white;\n    cursor: pointer;\n    text-align: center;\n";
 var INVIS_BTN_STYLE = "\n    width: 70px;\n    height: 20px;\n    display: inline-block;\n    border: 1px solid black;\n    background-color: purple;\n    color: white;\n    cursor: pointer;\n    text-align: center;\n";
-var BOX_STYLE = "\n    max-width: 900px;\n    width: 100%;\n    margin: 0 auto;\n    position: relative;\n    \n";
-var CIRCLE_BTN_STYLE = "\n    padding: 5px 30px;\n    text-align: center;\n    position: absolute;\n    cursor: pointer;\n    background-color: #deb887;\n    color: black;\n    text-decoration: none;\n    border-radius: 10px;\n    margin-left: 10px;\n    margin-top: -4px;\n";
-var CIRCLE_MOVE_STYLE = "\n  position: relative;\n  width: 100px;\n  height: 100px;\n  display: inline-block;\n  border-radius: 50%;\n  background-color: red;\n  cursor: pointer;\n  margin-top: 10px;\n  transition: 3s;\n  \n  \n";
+var BOX_STYLE = "\n    max-width: 900px;\n    width: 100%;\n    margin: 0 auto;\n    position: relative;\n";
+var CIRCLE_BTN_STYLE = "\n    padding: 5px 30px;\n    text-align: center;\n    position: absolute;\n    cursor: pointer;\n    background-color: #deb887;\n    color: black;\n    text-decoration: none;\n    border-radius: 10px;\n    margin-left: 10px;\n    margin-top: -4px;\n    border: none;\n";
+var CIRCLE_MOVE_STYLE = "\n  position: relative;\n  width: 100px;\n  height: 100px;\n  display: inline-block;\n  border-radius: 50%;\n  background-color: red;\n  cursor: pointer;\n  margin-top: 10px;\n  transition: 3s;\n";
 var CIRCLE_STYLE = "\n    width: 100px;\n    height: 100px;\n    position: relative;\n    display: inline-block;\n    border-radius: 50%;\n    background-color: red;\n    cursor: pointer;\n    margin-top: 10px;\n    transition: 2s;\n    left: 0;\n";
 btn.setAttribute('style', BTN_STYLE);
 btn.innerText = "Click";
 invisibleBtn.setAttribute('style', INVIS_BTN_STYLE);
 invisibleBtn.innerText = "Invisible";
 box.setAttribute('style', BOX_STYLE);
-// inpCircle.setAttribute('style', CIRCLE_INP_STYLE);
 btnCircle.setAttribute('style', CIRCLE_BTN_STYLE);
 circle.setAttribute('style', CIRCLE_STYLE);
 wrapper.setAttribute('style', WRAP_STYLE);
@@ -91,6 +90,14 @@ console.log(num);
 var handleInp = function () {
     alert(inputVal.value);
 };
+// Привяжите всем ссылкам в документе событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках.
+var link = document.getElementsByTagName('a');
+var href = function (event) {
+    event.target.innerText = event.target.innerText + " (" + event.target.href + ")";
+};
+for (var i = 0; i < link.length; i++) {
+    link[i].addEventListener('mouseover', href);
+}
 btn.addEventListener('click', handleInp);
 //Добавьте JavaScript к кнопке button, чтобы при нажатии элемент
 // исчезал.

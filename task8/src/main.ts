@@ -74,6 +74,7 @@ const CIRCLE_BTN_STYLE = `
     border-radius: 10px;
     margin-left: 10px;
     margin-top: -4px;
+    border: none;
 `;
 const CIRCLE_MOVE_STYLE = `
   position: relative;
@@ -173,6 +174,16 @@ console.log(num);
 // }
 const handleInp = () => {
     alert(inputVal.value);
+}
+// Привяжите всем ссылкам в документе событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках.
+
+const link = document.getElementsByTagName('a') as HTMLCollection;
+const href = (event: any) => {
+	event.target.innerText = `${event.target.innerText} (${event.target.href})`;
+};
+
+for (let i = 0; i < link.length; i++){
+    link[i].addEventListener('mouseover', href);
 }
 
 btn.addEventListener('click', handleInp);
