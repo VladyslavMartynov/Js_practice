@@ -194,14 +194,19 @@ const eventText = () => {
 invisibleBtn.addEventListener('click', eventText);
 
 
-const moveCircle = (elem: HTMLElement, value: string): void => {
+const moveCircle = (elem: HTMLElement, value: number): void => {
     elem.setAttribute('style',`${CIRCLE_MOVE_STYLE};left:${value}px;`);
 }
 
 const validateInput = (elem: HTMLInputElement) => {
     const trigger = Number.parseInt(elem.value);
     if(!Number.isNaN(trigger)){
-        moveCircle(circle,elem.value);
+        if(trigger < 600){
+            moveCircle(circle, trigger);
+        } else {
+            elem.value = 'Error';
+        }
+
     } else {
         elem.value = ``;
     }

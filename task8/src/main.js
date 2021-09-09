@@ -104,7 +104,12 @@ var moveCircle = function (elem, value) {
 var validateInput = function (elem) {
     var trigger = Number.parseInt(elem.value);
     if (!Number.isNaN(trigger)) {
-        moveCircle(circle, elem.value);
+        if (trigger < 600) {
+            moveCircle(circle, trigger);
+        }
+        else {
+            elem.value = 'Error';
+        }
     }
     else {
         elem.value = "";
