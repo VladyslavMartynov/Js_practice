@@ -62,7 +62,6 @@ const BOX_STYLE = `
     width: 100%;
     margin: 0 auto;
     position: relative;
-    
 `;
 const CIRCLE_BTN_STYLE = `
     padding: 5px 30px;
@@ -86,8 +85,6 @@ const CIRCLE_MOVE_STYLE = `
   cursor: pointer;
   margin-top: 10px;
   transition: 3s;
-  
-  
 `;
 const CIRCLE_STYLE = `
     width: 100px;
@@ -109,7 +106,6 @@ invisibleBtn.setAttribute('style',INVIS_BTN_STYLE);
 invisibleBtn.innerText = "Invisible";
 
 box.setAttribute('style',BOX_STYLE);
-// inpCircle.setAttribute('style', CIRCLE_INP_STYLE);
 btnCircle.setAttribute('style', CIRCLE_BTN_STYLE);
 circle.setAttribute('style', CIRCLE_STYLE);
 
@@ -142,11 +138,9 @@ p.addEventListener('click',eventP);
 img.addEventListener('mouseover', imgZoom);
 img.addEventListener('mouseout', imgNoZoom);
 img.addEventListener('click', imgDisappear);
-
 // Дан массив с числами.
 // Найдите сумму последних N элементов до первого нуля с конца.
 // Пример: [1, 2, 3, 0, 4, 5, 6] - суммируем последние 3 элемента, так как дальше стоит элемент с числом 0.
-
 const array : Array<number> = [1, 2, 3, 0, 4, 5, 6];
 let trigger = 0;
 const result: number = array.reduceRight((acc, item) => {
@@ -158,10 +152,8 @@ const result: number = array.reduceRight((acc, item) => {
     } else {
         return acc;
     }
-
-})
+});
 console.log(result);
-
 // Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить, чтобы в сумме получилось больше 10-ти.
 const arr: Array<number> = [1, 2, 3, 4, 5, 6];
 let num:number = 0;
@@ -175,28 +167,22 @@ let resultArr:number = arr.reduce((acc, item) => {
 },0)
 
 console.log(num);
-
 //Есть инпут, в который что-то вводим. Рядом с инпутом есть кнопка. По нажатию на кнопку выводим в консоль то, что вписали в инпут.
 // const getValue = (elem: HTMLInputElement) => {
 //     alert(elem.value);
 // }
-
 const handleInp = () => {
     alert(inputVal.value);
 }
 
 btn.addEventListener('click', handleInp);
-
 //Добавьте JavaScript к кнопке button, чтобы при нажатии элемент
 // исчезал.
-
 const eventText = () => {
     spanText.innerText =``;
 }
 
 invisibleBtn.addEventListener('click', eventText);
-
-
 
 const moveCircle = (elem: HTMLElement, value: number): void => {
     elem.setAttribute('style',`${CIRCLE_MOVE_STYLE};left:${value}px;`);
@@ -228,17 +214,3 @@ const handlePx = () => {
 }
 
 btnCircle.addEventListener('click', handlePx);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
