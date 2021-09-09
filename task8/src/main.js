@@ -21,7 +21,7 @@ var INVIS_BTN_STYLE = "\n    width: 70px;\n    height: 20px;\n    display: inlin
 var BOX_STYLE = "\n    max-width: 900px;\n    width: 100%;\n    margin: 0 auto;\n    position: relative;\n    \n";
 var CIRCLE_BTN_STYLE = "\n    padding: 5px 30px;\n    text-align: center;\n    position: absolute;\n    cursor: pointer;\n    background-color: #deb887;\n    color: black;\n    text-decoration: none;\n    border-radius: 10px;\n    margin-left: 10px;\n    margin-top: -4px;\n";
 var CIRCLE_MOVE_STYLE = "\n  position: relative;\n  width: 100px;\n  height: 100px;\n  display: inline-block;\n  border-radius: 50%;\n  background-color: red;\n  cursor: pointer;\n  margin-top: 10px;\n  transition: 3s;\n  \n  \n";
-var CIRCLE_STYLE = "\n    width: 100px;\n    height: 100px;\n    display: inline-block;\n    border-radius: 50%;\n    background-color: red;\n    cursor: pointer;\n    margin-top: 10px;\n";
+var CIRCLE_STYLE = "\n    width: 100px;\n    height: 100px;\n    position: relative;\n    display: inline-block;\n    border-radius: 50%;\n    background-color: red;\n    cursor: pointer;\n    margin-top: 10px;\n    transition: 2s;\n    left: 0;\n";
 btn.setAttribute('style', BTN_STYLE);
 btn.innerText = "Click";
 invisibleBtn.setAttribute('style', INVIS_BTN_STYLE);
@@ -101,11 +101,17 @@ invisibleBtn.addEventListener('click', eventText);
 var moveCircle = function (elem, value) {
     elem.setAttribute('style', CIRCLE_MOVE_STYLE + ";left:" + value + "px;");
 };
+var basicPosition = function () {
+    setTimeout(function () {
+        circle.setAttribute('style', CIRCLE_STYLE);
+    }, 3000);
+};
 var validateInput = function (elem) {
     var trigger = Number.parseInt(elem.value);
     if (!Number.isNaN(trigger)) {
         if (trigger < 600) {
             moveCircle(circle, trigger);
+            basicPosition();
         }
         else {
             elem.value = 'Error';

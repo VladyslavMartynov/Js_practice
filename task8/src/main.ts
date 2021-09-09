@@ -92,11 +92,14 @@ const CIRCLE_MOVE_STYLE = `
 const CIRCLE_STYLE = `
     width: 100px;
     height: 100px;
+    position: relative;
     display: inline-block;
     border-radius: 50%;
     background-color: red;
     cursor: pointer;
     margin-top: 10px;
+    transition: 2s;
+    left: 0;
 `;
 
 btn.setAttribute('style', BTN_STYLE);
@@ -194,8 +197,15 @@ const eventText = () => {
 invisibleBtn.addEventListener('click', eventText);
 
 
+
 const moveCircle = (elem: HTMLElement, value: number): void => {
     elem.setAttribute('style',`${CIRCLE_MOVE_STYLE};left:${value}px;`);
+}
+
+const basicPosition = () => {
+    setTimeout(() => {
+        circle.setAttribute('style', CIRCLE_STYLE);
+    },3000);
 }
 
 const validateInput = (elem: HTMLInputElement) => {
@@ -203,6 +213,7 @@ const validateInput = (elem: HTMLInputElement) => {
     if(!Number.isNaN(trigger)){
         if(trigger < 600){
             moveCircle(circle, trigger);
+            basicPosition();
         } else {
             elem.value = 'Error';
         }
