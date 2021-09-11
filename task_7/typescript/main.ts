@@ -2,12 +2,12 @@ const wrapper = document.getElementById('wrapper')!;
 const holder = document.getElementById('holder')!;
 const collection = document.getElementsByClassName('item') as HTMLCollection;
 
-type nameArr = Array<string>;
+type nameArr = string [];
 
 // Создать функцию которая будет удалять людей из массива по индексу, который мы передадим параметром.
 const arr: nameArr = ['Vasya', 'Petya', 'Alexey'];
 
-const removeUser = (arr: Array<string>, num: number): Array<string> =>
+const removeUser = (arr: string [], num: number): string [] =>
     arr.filter((el, i) => {
         return i !== num;
     });
@@ -19,12 +19,12 @@ console.log(removeUser(arr, 0));
 
 const createElem = (elem: string): HTMLElement => document.createElement(elem);
 
-const appendElem = (elem: HTMLElement, targetElem: HTMLElement) => targetElem.append(elem);
+const appendElem = (elem: HTMLElement, targetElem: HTMLElement): void => targetElem.append(elem);
 
-const setAttrToElem = (elem: HTMLElement, name?: string, value?: Array<string>) =>
+const setAttrToElem = (elem: HTMLElement, name?: string, value?: string []): void =>
     elem.setAttribute(`${name}`, `${value}`);
 
-const styleElem = (elem: HTMLElement, valueArr: Array<string>) =>
+const styleElem = (elem: HTMLElement, valueArr: string []): void =>
    setAttrToElem(elem,'style', valueArr);
 
 const div: HTMLElement = createElem('div');
@@ -83,7 +83,7 @@ styleElem(div3,[`
 //
 //         </div>
 
-const createHtmlCollection = (arr: Array<string>, attr: string, val: string, target: HTMLElement) => {
+const createHtmlCollection = (arr: string [], attr: string, val: string, target: HTMLElement) => {
     arr.forEach((el) => {
         const elem = createElem(el);
         elem.setAttribute(`${attr}`,`${val}`);
@@ -96,14 +96,14 @@ const createHtmlCollection = (arr: Array<string>, attr: string, val: string, tar
     });
 }
 
-const innerTextCollection = (collection: any, i:number = 0) => {
-    for (const elem of collection) {
-        elem.innerHTML = `${(i += 1)}`;
-        console.log(elem);
+const innerTextCollection = (collection: HTMLCollection, num: number = 0) => {
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].innerHTML = `${(num += 1)}`;
+        console.log(i);
     }
 }
 
-const array: Array<string> = ['div', 'div', 'div', 'div', 'div'];
+const array: string [] = ['div', 'div', 'div', 'div', 'div'];
 createHtmlCollection(array, 'class', 'item', holder);
 
 innerTextCollection(collection);

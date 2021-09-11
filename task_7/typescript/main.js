@@ -50,16 +50,59 @@ var createHtmlCollection = function (arr, attr, val, target) {
         }
     });
 };
-var innerTextCollection = function (collection, i) {
-    if (i === void 0) { i = 0; }
-    for (var _i = 0, collection_1 = collection; _i < collection_1.length; _i++) {
-        var elem = collection_1[_i];
-        elem.innerHTML = "" + (i += 1);
-        console.log(elem);
+var innerTextCollection = function (collection, num) {
+    if (num === void 0) { num = 0; }
+    for (var i = 0; i < collection.length; i++) {
+        collection[i].innerHTML = "" + (num += 1);
+        console.log(i);
     }
+    // for (const elem of collection) {
+    //     elem.innerHTML = `${(i += 1)}`;
+    //     console.log(elem);
+    // }
 };
 var array = ['div', 'div', 'div', 'div', 'div'];
 createHtmlCollection(array, 'class', 'item', holder);
 innerTextCollection(collection);
 styleElem(holder, ["\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    justify-content: flex-start;\n    max-width: 400px;\n    border: 2px solid black;\n    margin: 20px auto;\n    border-radius: 20% 20% 0 0;\n"]);
 // С помощью стилей привести блоки в такой вид (в стилях только флекс)
+// Напилить код функции modificator, такой, чтобы в результате работы кода была строка "sampleFunc: test | sample":
+function sampleFunc() {
+    console.log(arguments.callee.name + ": " + arguments[0] + " | " + arguments[1]);
+}
+function modificator(func) {
+    return function () {
+        func('test', 'sample');
+    };
+}
+var testFunc = modificator(sampleFunc);
+testFunc(); // sampleFunc: test | sample
+//Создать массив group, элементы которого будут объектами, содержащими данные каждого студента группы
+// Какие данные - на ваше усмотрение ( например, имя, фамилия, возраст, наличие ноутбука и т.д. )
+var Person = /** @class */ (function () {
+    function Person(name, lastName, age, notebook) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.notebook = notebook;
+    }
+    Person.prototype.toString = function () {
+        var _this = this;
+        return Object.keys(this)
+            .map(function (el) {
+            return el + " - " + Object.create(_this)[el];
+        })
+            .join(',');
+    };
+    return Person;
+}());
+var group = [
+    new Person('Vlad', 'Alexandrov', 23, true),
+    new Person('Vasya', 'Lyx', 21, true),
+    new Person('Alexandr', 'Kostylev', 20, true),
+    new Person('Denis', 'Sharipov', 23, true),
+];
+function getStudentsList(arrayOfStudents) {
+    return String(arrayOfStudents);
+}
+console.log(getStudentsList((group)));
