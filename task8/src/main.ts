@@ -117,21 +117,21 @@ p.style.cursor = 'pointer';
 wrapper.prepend(p);
 wrapper.append(img);
 
-const eventP = () => {
+const eventP = (): void => {
     img.setAttribute('src','images/Patrik.jfif');
     img.setAttribute('style', IMG_STYLE);
     p.setAttribute('style', P_STYLE);
 }
 
-const imgZoom = () => {
+const imgZoom = (): void => {
     img.setAttribute('style', ZOOM_IMG);
 }
 
-const imgNoZoom = () => {
+const imgNoZoom = (): void => {
     img.setAttribute('style', IMG_STYLE);
 }
 
-const imgDisappear = () => {
+const imgDisappear = (): void => {
     img.remove();
 }
 
@@ -142,8 +142,8 @@ img.addEventListener('click', imgDisappear);
 // Дан массив с числами.
 // Найдите сумму последних N элементов до первого нуля с конца.
 // Пример: [1, 2, 3, 0, 4, 5, 6] - суммируем последние 3 элемента, так как дальше стоит элемент с числом 0.
-const array : Array<number> = [1, 2, 3, 0, 4, 5, 6];
-let trigger = 0;
+const array: number [] = [1, 2, 3, 0, 4, 5, 6];
+let trigger: number = 0;
 const result: number = array.reduceRight((acc, item) => {
     if(item === trigger) {
         trigger = -1;
@@ -156,9 +156,9 @@ const result: number = array.reduceRight((acc, item) => {
 });
 console.log(result);
 // Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить, чтобы в сумме получилось больше 10-ти.
-const arr: Array<number> = [1, 2, 3, 4, 5, 6];
-let num:number = 0;
-let resultArr:number = arr.reduce((acc, item) => {
+const arr: number [] = [1, 2, 3, 4, 5, 6];
+let num: number = 0;
+let resultArr: number = arr.reduce((acc, item) => {
     if(acc >= 10){
         return acc;
     } else {
@@ -172,13 +172,13 @@ console.log(num);
 // const getValue = (elem: HTMLInputElement) => {
 //     alert(elem.value);
 // }
-const handleInp = () => {
+const handleInp = (): void => {
     alert(inputVal.value);
 }
 // Привяжите всем ссылкам в документе событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках.
 
 const link = document.getElementsByTagName('a') as HTMLCollection;
-const href = (event: any) => {
+const href = (event: any): void => {
 	event.target.innerText = `${event.target.innerText} (${event.target.href})`;
 };
 
@@ -189,7 +189,7 @@ for (let i = 0; i < link.length; i++){
 btn.addEventListener('click', handleInp);
 //Добавьте JavaScript к кнопке button, чтобы при нажатии элемент
 // исчезал.
-const eventText = () => {
+const eventText = (): void => {
     spanText.innerText =``;
 }
 
@@ -205,7 +205,7 @@ const basicPosition = () => {
     },3000);
 }
 
-const validateInput = (elem: HTMLInputElement) => {
+const validateInput = (elem: HTMLInputElement): void => {
     const trigger = Number.parseInt(elem.value);
     if(!Number.isNaN(trigger)){
         if(trigger < 600){
@@ -220,7 +220,7 @@ const validateInput = (elem: HTMLInputElement) => {
     }
 }
 
-const handlePx = () => {
+const handlePx = (): void => {
     validateInput(inpCircle);
 }
 
